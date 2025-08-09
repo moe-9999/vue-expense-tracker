@@ -19,9 +19,15 @@ const amount = ref(0);
 const name = ref("");
 
 function handleSubmit() {
-  if (amount.value === 0 || name.value === "") {
+  if (name.value === "") {
     toast.error("Missing Info", {
       description: "Both fields must be filled",
+    });
+    return;
+  }
+  if (amount.value === 0) {
+    toast.error("Missing Info", {
+      description: "Amount can not be zero",
     });
     return;
   }

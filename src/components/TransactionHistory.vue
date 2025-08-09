@@ -6,10 +6,10 @@
     <div
       v-for="transaction in transactions"
       :key="transaction.id"
-      class="flex group justify-between align-center gap-4 bg-slate-800 p-3 rounded relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-1 after:rounded-r"
-      :class="
-        transaction.amount >= 0 ? 'after:bg-green-500' : 'after:bg-red-600'
-      "
+      class="flex group justify-between align-center gap-4 bg-slate-800 after:bg-red-600 p-3 rounded relative after:content-[''] after:absolute after:top-0 after:right-0 after:h-full after:w-1 after:rounded-r"
+      :class="{
+        'after:bg-green-500': transaction.amount >= 0,
+      }"
     >
       <span>
         {{ transaction.name }}

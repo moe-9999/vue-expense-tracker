@@ -4,14 +4,12 @@
     <h1 class="text-xl mb-4">
       Expense Tracker:
     </h1>
-    <Balance :balance="+balance" />
-    <IncomeExpenseSummary :income="+income" :expenses="+expenses" />
+    <Balance :balance />
+    <IncomeExpenseSummary :income :expenses />
     <TransactionHistory
-
-      :transactions="transactions"
+      :transactions
       @remove-transaction="removeTransaction"
     />
-
     <AddTransaction @add-transaction="addTransaction" />
   </div>
 </template>
@@ -30,7 +28,7 @@ import TransactionHistory from "@/components/TransactionHistory.vue";
 const transactions = useStorage("transactions", []);
 
 const balance = computed(() => {
-  return transactions.value
+  return +transactions.value
     .reduce((acc, transaction) => {
       return acc + transaction.amount;
     }, 0)
@@ -38,14 +36,14 @@ const balance = computed(() => {
 });
 
 const income = computed(() => {
-  return transactions.value
+  return +transactions.value
     .filter(transaction => transaction.amount >= 0)
     .reduce((acc, transaction) => acc + transaction.amount, 0)
     .toFixed(2);
 });
 
 const expenses = computed(() => {
-  return transactions.value
+  return +transactions.value
     .filter(transaction => transaction.amount < 0)
     .reduce((acc, transaction) => acc + transaction.amount, 0)
     .toFixed(2);
