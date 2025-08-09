@@ -1,3 +1,13 @@
+<template>
+  <form class="flex flex-col gap-3" @submit.prevent="handleSubmit">
+    <Input v-model.text="name" type="text" placeholder="name" />
+    <Input v-model.number="amount" type="number" placeholder="amount" />
+    <Button variant="secondary" type="submit">
+      Submit
+    </Button>
+  </form>
+</template>
+
 <script setup lang="ts">
 import { ref } from "vue";
 import { toast } from "vue-sonner";
@@ -32,15 +42,5 @@ function handleSubmit() {
   name.value = "";
 }
 </script>
-
-<template>
-  <form class="flex flex-col gap-3" @submit.prevent="handleSubmit">
-    <Input v-model.text="name" type="text" placeholder="name" />
-    <Input v-model.number="amount" type="number" placeholder="amount" />
-    <Button variant="secondary" type="submit">
-      Submit
-    </Button>
-  </form>
-</template>
 
 <style scoped></style>

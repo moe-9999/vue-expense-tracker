@@ -1,3 +1,21 @@
+<template>
+  <Toaster rich-colors theme="dark" position="top-right" />
+  <div class="bg-slate-900 p-9 rounded">
+    <h1 class="text-xl mb-4">
+      Expense Tracker:
+    </h1>
+    <Balance :balance="+balance" />
+    <IncomeExpenseSummary :income="+income" :expenses="+expenses" />
+    <TransactionHistory
+
+      :transactions="transactions"
+      @remove-transaction="removeTransaction"
+    />
+
+    <AddTransaction @add-transaction="addTransaction" />
+  </div>
+</template>
+
 <script setup>
 import { useStorage } from "@vueuse/core";
 import { computed } from "vue";
@@ -42,21 +60,3 @@ function removeTransaction(id) {
   transactions.value = transactions.value.filter(t => t.id !== id);
 }
 </script>
-
-<template>
-  <Toaster rich-colors theme="dark" position="top-right" />
-  <div class="bg-slate-900 p-9 rounded">
-    <h1 class="text-xl mb-4">
-      Expense Tracker:
-    </h1>
-    <Balance :balance="+balance" />
-    <IncomeExpenseSummary :income="+income" :expenses="+expenses" />
-    <TransactionHistory
-
-      :transactions="transactions"
-      @remove-transaction="removeTransaction"
-    />
-
-    <AddTransaction @add-transaction="addTransaction" />
-  </div>
-</template>

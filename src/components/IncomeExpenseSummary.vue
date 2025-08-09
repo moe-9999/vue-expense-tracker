@@ -1,12 +1,3 @@
-<script setup lang="ts">
-interface Props {
-  income: number;
-  expenses: number;
-}
-
-const { income, expenses } = defineProps<Props>();
-</script>
-
 <template>
   <div
     class="bg-slate-800 rounded px-4 mb-4 flex items-center [&>div]:flex-1 [&>div]:grid [&>div]:place-content-center [&>div]:p-6"
@@ -24,5 +15,14 @@ const { income, expenses } = defineProps<Props>();
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+interface Props {
+  income: number;
+  expenses: number;
+}
+
+const { income, expenses } = defineProps<Props>();
+</script>
 
 <style scoped></style>

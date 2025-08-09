@@ -1,25 +1,3 @@
-<script setup lang="ts">
-import IconClose from "~icons/mdi/close";
-
-interface Transaction {
-  id: number;
-  name: string;
-  amount: number;
-}
-
-const { transactions } = defineProps<{
-  transactions: Transaction[];
-}>();
-
-const emit = defineEmits<{
-  (e: "remove-transaction", id: number): void;
-}>();
-
-function remove(id: number) {
-  emit("remove-transaction", id);
-}
-</script>
-
 <template>
   <h2 class="mb-2">
     Transaction History:
@@ -46,5 +24,27 @@ function remove(id: number) {
     </div>
   </div>
 </template>
+
+<script setup lang="ts">
+import IconClose from "~icons/mdi/close";
+
+interface Transaction {
+  id: number;
+  name: string;
+  amount: number;
+}
+
+const { transactions } = defineProps<{
+  transactions: Transaction[];
+}>();
+
+const emit = defineEmits<{
+  (e: "remove-transaction", id: number): void;
+}>();
+
+function remove(id: number) {
+  emit("remove-transaction", id);
+}
+</script>
 
 <style scoped></style>

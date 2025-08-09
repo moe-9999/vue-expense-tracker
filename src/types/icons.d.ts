@@ -3,6 +3,6 @@
 declare module "~icons/*" {
   import type { DefineComponent } from "vue";
 
-  const component: DefineComponent<Record<string, unknown>, {}, any>;
+  const component: DefineComponent<Record<string, unknown>>;
   export default component;
 }

@@ -26,6 +26,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      eslint:
+        specifier: ^9.33.0
+        version: 9.33.0(jiti@2.5.1)
       lucide-react:
         specifier: ^0.536.0
         version: 0.536.0(react@19.1.1)
