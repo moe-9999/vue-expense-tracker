@@ -1,21 +1,12 @@
-<template>
-  <form @submit.prevent="handleSubmit" class="flex flex-col gap-3">
-    <Input v-model.text="name" type="text" placeholder="name" />
-    <Input v-model.number="amount" type="number" placeholder="amount" />
-    <Button variant="secondary" type="submit">Submit</Button>
-  </form>
-</template>
-
 <script setup lang="ts">
 import { ref } from "vue";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { toast } from "vue-sonner";
-
-const amount = ref(0);
-const name = ref("");
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const emit = defineEmits(["add-transaction"]);
+const amount = ref(0);
+const name = ref("");
 
 function handleSubmit() {
   if (amount.value === 0 || name.value === "") {
@@ -41,5 +32,15 @@ function handleSubmit() {
   name.value = "";
 }
 </script>
+
+<template>
+  <form class="flex flex-col gap-3" @submit.prevent="handleSubmit">
+    <Input v-model.text="name" type="text" placeholder="name" />
+    <Input v-model.number="amount" type="number" placeholder="amount" />
+    <Button variant="secondary" type="submit">
+      Submit
+    </Button>
+  </form>
+</template>
 
 <style scoped></style>
