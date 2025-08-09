@@ -1,16 +1,19 @@
 <template>
-  <div class="mb-3">
-    <h3 class="text-slate-300 uppercase font-bold mb-1">
+  <div>
+    <h3 id="balance-heading" class="text-slate-300 uppercase font-bold mb-1" aria-label="Current balance">
       Balance
     </h3>
-    <h1
-      class="text-3xl text-red-600"
+    <data
+      class="text-3xl font-medium"
       :class="{
-        'text-green-600': balance >= 0,
+        'text-green-500': balance >= 0,
+        'text-red-500': balance < 0,
       }"
+      :value="balance"
+      aria-labelledby="balance-heading"
     >
       ${{ balance }}
-    </h1>
+    </data>
   </div>
 </template>
 

@@ -1,20 +1,26 @@
 <template>
   <form class="flex flex-col gap-3" @submit.prevent="handleSubmit">
-    <Input v-model.text="name" type="text" placeholder="name" />
-    <Input v-model.number="amount" type="number" placeholder="amount" />
-    <Button variant="secondary" type="submit">
-      Submit
+    <div class="flex gap-3">
+      <Input v-model="name" type="text" placeholder="Name" aria-label="Transaction name" />
+      <Input v-model.number="amount" step="0.01" type="number" placeholder="Amount" aria-label="Transaction amount" />
+    </div>
+    <Button variant="secondary" type="submit" aria-label="Add transaction">
+      Add
     </Button>
   </form>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import type { Transaction } from "@/types/transactions";
+import { ref, useId } from "vue";
 import { toast } from "vue-sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-const emit = defineEmits(["add-transaction"]);
+const emit = defineEmits<{
+  (e: "add-transaction", transaction: Transaction): void;
+}>();
+
 const amount = ref(0);
 const name = ref("");
 
@@ -32,8 +38,8 @@ function handleSubmit() {
     return;
   }
 
-  const newTransaction = {
-    id: Date.now(),
+  const newTransaction: Transaction = {
+    id: useId(),
     name: name.value,
     amount: amount.value,
   };

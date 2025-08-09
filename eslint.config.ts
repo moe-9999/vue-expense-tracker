@@ -12,6 +12,7 @@ export default antfu({
       order: ["template", "script", "style"],
     }],
     "vue/custom-event-name-casing": ["error", "kebab-case"],
+    "ts/consistent-type-definitions": ["off"],
   },
   ignores: [],
 });

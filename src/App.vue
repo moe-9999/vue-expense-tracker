@@ -1,16 +1,18 @@
 <template>
   <Toaster rich-colors theme="dark" position="top-right" />
-  <div class="bg-slate-900 p-9 rounded">
-    <h1 class="text-xl mb-4">
-      Expense Tracker:
+  <div class="container grid place-content-center h-screen">
+    <h1 class="text-3xl font-bold text-center mb-12">
+      Expense Tracker
     </h1>
-    <Balance :balance />
-    <IncomeExpenseSummary :income :expenses />
-    <TransactionHistory
-      :transactions
-      @remove-transaction="removeTransaction"
-    />
-    <AddTransaction @add-transaction="addTransaction" />
+    <div class="bg-slate-900 p-9 rounded-md mx-auto w-full md:w-[60ch] sm:w-[50ch] space-y-8">
+      <Balance :balance />
+      <IncomeExpenseSummary :income :expenses />
+      <TransactionHistory
+        :transactions
+        @remove-transaction="removeTransaction"
+      />
+      <AddTransaction @add-transaction="addTransaction" />
+    </div>
   </div>
 </template>
 
