@@ -24,7 +24,6 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
 import IconClose from "~icons/mdi/close";
 
 interface Transaction {
@@ -37,7 +36,7 @@ const emit = defineEmits<{
   (e: "remove-transaction", id: number): void;
 }>();
 
-const props = defineProps<{
+const { transactions } = defineProps<{
   transactions: Transaction[];
 }>();
 

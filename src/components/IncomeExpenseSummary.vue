@@ -13,18 +13,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
+interface Props {
+  income: number;
+  expenses: number;
+}
 
-const props = defineProps({
-  income: {
-    type: Number,
-    required: true,
-  },
-  expenses: {
-    type: Number,
-    required: true,
-  },
-});
+const { income, expenses } = defineProps<Props>();
 </script>
 
 <style scoped></style>
